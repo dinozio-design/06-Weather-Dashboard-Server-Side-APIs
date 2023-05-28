@@ -25,20 +25,48 @@
         </section>
         <!-- <p id="currentDay" class="lead"></p> -->
     </header>
-    <main>
-        <div id="searchArea">
-            <button class="button is-primary">Search</button>
+    <main class="columns">
+        <div id="searchArea" class="column is-one-quarter">
+            <form class="box"> 
+                <div class="field">
+                  <label class="label">City</label>
+                  <div class="control">
+                    <input class="input" type="city" placeholder="type in a city name">
+                  </div>
+                </div>
+                <div class="field">
+                    <label class="label">Country</label>
+                    <div class="control">
+                      <input class="input" type="country" placeholder="type in the country name">
+                    </div>
+                  </div>
+                <button class="button is-primary is-fullwidth">SEARCH</button>
+            </form>
+            <div id="searchHistory" class="column">
+                <h3>SEARCH HISTORY</h3>
+                <form class="is-grouped">
+                    <button class="button" name = "fromLocalStorage">from local storage</button>
+                    <button class="button" name = "fromLocalStorage">from local storage</button>
+                    <button class="button" name = "fromLocalStorage">from local storage</button>
+                    <button class="button" name = "fromLocalStorage">from local storage</button>
+                </form>
+    
+            </div>
         </div>
-        <div id="displayArea">
 
+        <div id="displayArea" class="column">
+            <section class="section">
+                <div class="container">
+                    <h2 class="title">cityName<i class="fa-solid fa-sub-bright"></i></h2>
+                    <p class="date">current date</p>
+                </div>
+            </section>
         </div>
-        <div is="searchHistory">
 
-        </div>
     </main>
-    <footer>
-        <h6>Contributions:</h6>
-        <p class="footerText">This web app is brought to you by:<br>© Sam Azimi - 2023 CodeCamp Studen.<br>Confidential
+    <footer class="column is-full">
+        <h3 class="label">Contributions:</h3>
+        <p>This web app is brought to you by:<br>© Sam Azimi - 2023 CodeCamp Studen.<br>Confidential
             and Proprietary. All Rights Reserved.</p>
     </footer>
     <script src="./assets/scripts/script.js"></script>
