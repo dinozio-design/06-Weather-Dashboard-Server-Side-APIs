@@ -23,45 +23,45 @@
                     <i class="fa-solid fa-earth-americas"></i>
                 </span>
                 <span>Search Your Destinations' Weather Forecast for <strong>Your Vacation</strong> Planing</span>
-              </span>
-            
+            </span>
+
             <!-- put current date here -->
         </div>
     </header>
     <main class="columns">
         <div id="searchArea" class="column is-one-quarter">
-            <form class="box"> 
+            <form id ="userForm" class="box">
                 <div class="field">
-                  <label class="label">City</label>
-                  <div class="control">
-                    <input class="input" type="city" placeholder="type in a city name">
-                  </div>
+                    <label class="label">City</label>
+                    <div class="control">
+                        <input class="input" type="city" placeholder="type in a city name">
+                    </div>
                 </div>
                 <div class="field">
                     <label class="label">Country</label>
                     <div class="control">
-                      <input class="input" type="country" placeholder="type in the country name">
+                        <input class="input" type="country" placeholder="type in the country name">
                     </div>
-                  </div>
+                </div>
                 <button class="button is-primary is-fullwidth">SEARCH</button>
             </form>
             <div id="searchHistory" class="column">
                 <h3>SEARCH HISTORY</h3>
-                <form class="is-grouped">
-                    <button class="button" name = "fromLocalStorage">from local storage</button>
-                    <button class="button" name = "fromLocalStorage">from local storage</button>
-                    <button class="button" name = "fromLocalStorage">from local storage</button>
-                    <button class="button" name = "fromLocalStorage">from local storage</button>
+                <form id = "historyButtons" class="is-grouped">
+                    <button class="button" name="fromLocalStorage">from local storage</button>
+                    <button class="button" name="fromLocalStorage">from local storage</button>
+                    <button class="button" name="fromLocalStorage">from local storage</button>
+                    <button class="button" name="fromLocalStorage">from local storage</button>
                 </form>
-    
+
             </div>
         </div>
 
         <div id="displayArea" class="column">
             <section class="section">
                 <div class="container">
-                    <h2 class="title">cityName<i class="fa-solid fa-sub-bright"></i></h2>
-                    <p class="date">current date</p>
+                    <h2 class="subtitle">Current Forecast for: <span id="cityNameSearch"></span><span id="todaysDate"></span></h2>
+                    <div id="resultContainer" class="list-group"></div>
                 </div>
             </section>
         </div>
