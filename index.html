@@ -4,26 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./assets/css/reset.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-    <script src="https://kit.fontawesome.com/68464df211.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script defer src="https://kit.fontawesome.com/68464df211.js" crossorigin="anonymous"></script>
+    <script defer src="./assets/scripts/script.js"></script>
     <title>My Weather App</title>
 </head>
 
 <body>
-    <header>
-        <section class="section">
-            <div class="container">
-                <h1 class="title">My Weather Dashboard</h1>
-                <p class="subtitle">
-                    Search your destinations to see the weather forecast and plan your vacation 
-                    <i class="fa-solid fa-earth-americas"></i></p>
-            </div>
-        </section>
-        <!-- <p id="currentDay" class="lead"></p> -->
+    <header class="section">
+        <div class="container">
+            <h1 class="title">My Weather Dashboard</h1>
+            <span class="icon-text has-text-centered">
+                <span class="icon">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </span>
+                <span>Search Your Destinations' Weather Forecast for <strong>Your Vacation</strong> Planing</span>
+              </span>
+            
+            <!-- put current date here -->
+        </div>
     </header>
     <main class="columns">
         <div id="searchArea" class="column is-one-quarter">
@@ -69,7 +72,7 @@
         <p>This web app is brought to you by:<br>© Sam Azimi - 2023 CodeCamp Studen.<br>Confidential
             and Proprietary. All Rights Reserved.</p>
     </footer>
-    <script src="./assets/scripts/script.js"></script>
+
 </body>
 
 </html>
