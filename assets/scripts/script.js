@@ -26,14 +26,17 @@ $.each(countryCodes, function () {
 function submitHandler(event) {
     event.preventDefault();
     var cityName = this.cityNameSearch.value.trim();
-    if (cityName) {
+    var countryName = this.countrySelect.value;
+    // console.log(countryName);
+    if (cityName && countryName != "Select Country") {
         // getUserRepos(cityName);
         console.log(`I got ${cityName}`);
-
+        console.log(`I got ${countryName}`);
+        
         cityNameSearch.textContent = '';
         countrySelect.value = 'Select Country';
     } else {
-        alert('Please enter a GitHub username');
+        alert('Please enter valid city and country name');
        
     }
 };
