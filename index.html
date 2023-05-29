@@ -10,26 +10,29 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script defer src="https://kit.fontawesome.com/68464df211.js" crossorigin="anonymous"></script>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script> -->
     <script defer src="./assets/scripts/script.js"></script>
     <title>My Weather App</title>
 </head>
 
 <body>
-    <header class="section">
-        <div class="container">
-            <h1 class="title">My Weather Dashboard</h1>
-            <span class="icon-text has-text-centered">
+    <header class="hero has-background-primary">
+        <div class="hero-body">
+            <h1 class="title has-text-danger-dark">My Weather Dashboard</h1>
+            <span class="icon-text has-text-danger-dark">
                 <span class="icon">
                     <i class="fa-solid fa-earth-americas"></i>
                 </span>
-                <span>Search Your Destinations' Weather Forecast for <strong>Your Vacation</strong> Planing</span>
+                <span>Search Your Destinations' Weather Forecast for <strong class="has-text-danger-dark">Your Vacation</strong> Planing</span>
             </span>
 
             <!-- put current date here -->
         </div>
     </header>
     <main class="columns">
-        <div id="searchArea" class="column is-one-quarter">
+        <div id="searchArea" class="column is-one-third">
             <form id ="userForm" class="box">
                 <div class="field">
                     <label class="label">City</label>
@@ -40,14 +43,19 @@
                 <div class="field">
                     <label class="label">Country</label>
                     <div class="control">
-                        <input class="input" type="country" placeholder="type in the country name">
+                        <div class="select">
+                            <select id="countrySelect">
+                              <option id="nill">Select dropdown</option>
+                              <option>With options</option>
+                            </select>
+                          </div>
                     </div>
                 </div>
-                <button class="button is-primary is-fullwidth">SEARCH</button>
+                <button class="button is-primary is-fullwidth has-text-danger-dark">SEARCH</button>
             </form>
             <div id="searchHistory" class="column">
                 <h3>SEARCH HISTORY</h3>
-                <form id = "historyButtons" class="is-grouped">
+                <form id = "historyButtons" class="is-grouped is-vcentered">
                     <button class="button" name="fromLocalStorage">from local storage</button>
                     <button class="button" name="fromLocalStorage">from local storage</button>
                     <button class="button" name="fromLocalStorage">from local storage</button>
