@@ -20,3 +20,10 @@ $.each(countryCodes, function(){
 
 // console.log(countryCodes);
 // console.log(countrySelect);
+
+function userSearch(event){
+    event.preventDefault();
+    console.log(`was pushed`, event);
+}
+
+userFormEl.on('submit',userSearch);
