@@ -25,7 +25,8 @@
                 <span class="icon">
                     <i class="fa-solid fa-earth-americas"></i>
                 </span>
-                <span>Search Your Destinations' Weather Forecast for <strong class="has-text-danger-dark">Your Vacation</strong> Planing</span>
+                <span>Search Your Destinations' Weather Forecast for <strong class="has-text-danger-dark">Your
+                        Vacation</strong> Planing</span>
             </span>
 
             <!-- put current date here -->
@@ -33,11 +34,12 @@
     </header>
     <main class="columns">
         <div id="searchArea" class="column is-one-third">
-            <form id ="userForm" class="box">
+            <form id="userForm" class="box">
                 <div class="field">
                     <label class="label">City</label>
                     <div class="control">
-                        <input class="input" type="city" placeholder="type in a city name">
+                        <input name="cityNameSearch" type="text" autofocus="true" id="cityNameSearch" class="input"
+                            placeholder="type in a city name">
                     </div>
                 </div>
                 <div class="field">
@@ -45,16 +47,16 @@
                     <div class="control">
                         <div class="select">
                             <select id="countrySelect">
-                              <option id="nill">Select Country</option>
+                                <option id="nill">Select Country</option>
                             </select>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <button class="button is-primary is-fullwidth has-text-danger-dark">SEARCH</button>
             </form>
             <div id="searchHistory" class="column">
                 <h3>SEARCH HISTORY</h3>
-                <form id = "historyButtons" class="is-grouped is-vcentered">
+                <form id="historyButtons" class="is-grouped is-vcentered">
                     <button class="button" name="fromLocalStorage">from local storage</button>
                     <button class="button" name="fromLocalStorage">from local storage</button>
                     <button class="button" name="fromLocalStorage">from local storage</button>
@@ -67,7 +69,8 @@
         <div id="displayArea" class="column">
             <section class="section">
                 <div class="container">
-                    <h2 class="subtitle">Current Forecast for: <span id="cityNameSearch"></span><span id="todaysDate"></span></h2>
+                    <h2 class="subtitle">Current Forecast for: <span id="cityNameDisplay"></span><span
+                            id="todaysDate"></span></h2>
                     <div id="resultContainer" class="list-group"></div>
                 </div>
             </section>
