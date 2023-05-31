@@ -14,22 +14,29 @@ $.each(countryCodes, function () {
     countrySelect.append(`<option id="${this[0]}">${this[1]}</option>`)
 })
 
+function renderMainCard(obj) {
+    console.log(obj);
+}
+function renderAheadCards(obj) {
+    console.log(obj);
+}
+
 function getWeather(lat, lon) {
-    var apiURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&cnt=6&appid=" + opernWeatherKey + "&units=metric";
+    var apiURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + opernWeatherKey + "&units=metric";
     fetch(apiURL)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-
-                    let forecasts = data.list
-for (var i = 0; i<forecasts.length; i++){
-
-    console.log(forecasts[i]);
-    console.log("temperature is: "+forecasts[i].main.temp+" C");
-    console.log(forecasts[i].weather[0].icon);
-}
-                    // must decide what method to call here!
-                });
+                    let forecasts = data.list;
+                    console.log(forecasts.length);
+                    renderMainCard(forecasts[0]);
+                    for (var i = 0; i < forecasts.length; i++) {
+                        // renderAheadCards(forecasts[i]);
+                        if (i % 8 == 0) {
+                            console.log(i, forecasts[i]);
+                        }
+                    }
+                })
             } else {
                 alert('Error: ' + response.statusText);
             }
@@ -70,10 +77,10 @@ function submitHandler(event) {
     var cityName = this.cityNameSearch.value.trim();
     var countryName = this.countrySelect.value;
 
-// control 
-cityName = "buffalo";
-countryName = "United States";
-// end control
+    // control 
+    cityName = "buffalo";
+    countryName = "United States";
+    // end control
 
     if (cityName && countryName != "Select Country") {
         getGeoCode(cityName, countryName);
