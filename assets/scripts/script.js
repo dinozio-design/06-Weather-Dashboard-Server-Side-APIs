@@ -24,7 +24,7 @@ function renderAheadCards(obj) {
 }
 
 function getWeather(lat, lon) {
-    var apiURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + opernWeatherKey + "&units=metric";
+    var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + opernWeatherKey + "&units=metric";
     fetch(apiURL)
         .then(function (response) {
             if (response.ok) {
@@ -56,7 +56,7 @@ function getGeoCode(city, country) {
         code = "US";
     }
 
-    var apiURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "," + code + "&appid=" + opernWeatherKey;
+    var apiURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "," + code + "&appid=" + opernWeatherKey;
 
     fetch(apiURL)
         .then(function (response) {
