@@ -93,6 +93,14 @@ function init() {
                 alert('Unable to connect to the server');
             });
     }
+    function anotherWeather(event) {
+        event.preventDefault();
+        var saved = event.target.name.split("_");
+        console.log(saved);
+        x = saved[0].trim();
+        y = saved[1].trim();
+        getWeather(x, y);
+    }
     function getGeoCode(city, country) {
         var code = "";
         if (country == "Canada") {
@@ -122,11 +130,6 @@ function init() {
         var cityName = this.cityNameSearch.value.trim();
         var countryName = this.countrySelect.value;
 
-        // control 
-        // cityName = "buffalo";
-        // countryName = "United States";
-        // end control
-
         if (cityName && countryName != "Select Country") {
             getGeoCode(cityName, countryName);
             cityNameSearch.textContent = '';
@@ -135,13 +138,7 @@ function init() {
             alert('Please enter valid city and country name');
         }
     };
-    function anotherWeather(event) {
-        event.preventDefault();
-        var saved = event.target.name.split("_");
-        x = saved[0].trim();
-        y = saved[1].trim();
-        getWeather(x, y);
-    }
+
     userFormEl.on('submit', submitHandler);
     historyButtonsEl.on('click', anotherWeather);
 }
