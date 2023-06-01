@@ -6,11 +6,11 @@ var cityNameDisplay = $('#cityNameDisplay');
 var countrySelect = $('#countrySelect')
 var todaysDate = $('#todaysDate');
 var resultContainerEl = $('#resultContainer');
-
+// in future builds will add ALL countries and their codes as array of objects
+// for now we will stick with Canada and US only 
 var countryCodes = [["CAN", "Canada"], ["US", "United States"]];
 
 $.each(countryCodes, function () {
-    // console.log(this[0], this[1]);
     countrySelect.append(`<option id="${this[0]}">${this[1]}</option>`)
 })
 
@@ -33,7 +33,6 @@ function getWeather(lat, lon) {
                     console.log(forecasts.length);
                     renderMainCard(forecasts[0]);
                     for (var i = 0; i < forecasts.length; i++) {
-                        // renderAheadCards(forecasts[i]);
                         if (i % 8 == 7) {
                             renderAheadCards(forecasts[i]);
                         }
@@ -68,8 +67,8 @@ function getGeoCode(city, country) {
                 alert('Error: ' + response.statusText);
             }
         })
-        .catch(function (error) {
-            alert('Unable to connect to GitHub');
+        .catch(function (_error) {
+            alert('Unable to connect to the weather servers');
         });
 }
 
