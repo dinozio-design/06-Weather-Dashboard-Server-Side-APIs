@@ -6,8 +6,6 @@ function init() {
     var countrySelect = $('#countrySelect')
     var resultContainerEl = $('#resultContainer');
     var historyButtonsEl = $('#historyButtons');
-    var cityNameDisplay = $('#cityNameDisplay');
-    var todaysDate = $('#todaysDate');
     // in future builds will add ALL countries and their codes as array of objects
     // for now we will stick with Canada and US only 
     var countryCodes = [["CAN", "Canada"], ["US", "United States"]];
@@ -66,11 +64,9 @@ function init() {
     function renderHistory() {
         console.log(searches);
         historyButtonsEl.empty();
-        for (i = 0; i < searches.length; i++){
+        for (i = 0; i < searches.length; i++) {
             historyButtonsEl.append(`<button class="button" name=" ${searches[i].key}">${searches[i].city}, ${searches[i].country}</button>`
-
             );
-            
         }
     }
     function getWeather(lat, lon) {
@@ -139,7 +135,15 @@ function init() {
             alert('Please enter valid city and country name');
         }
     };
+    function anotherWeather(event) {
+        event.preventDefault();
+        var saved = event.target.name.split("_");
+        x = saved[0].trim();
+        y = saved[1].trim();
+        getWeather(x, y);
+    }
     userFormEl.on('submit', submitHandler);
+    historyButtonsEl.on('click', anotherWeather);
 }
 init();
 
