@@ -14,6 +14,10 @@ $.each(countryCodes, function () {
     countrySelect.append(`<option id="${this[0]}">${this[1]}</option>`)
 })
 
+function saveToLocalStorage(cityCoord) {
+    console.log(cityCoord);
+}
+
 function renderMainCard(obj) {
     console.log(obj);
     // resultContainerEl.append("<")
@@ -22,7 +26,6 @@ function renderMainCard(obj) {
 function renderAheadCards(obj) {
     console.log(obj);
 }
-
 function getWeather(lat, lon) {
     var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + opernWeatherKey + "&units=metric";
     fetch(apiURL)
@@ -40,27 +43,28 @@ function getWeather(lat, lon) {
                 })
             } else {
                 alert('Error: ' + response.statusText);
+                
             }
         })
         .catch(function (error) {
             alert('Unable to connect to the server');
         });
 }
-
 function getGeoCode(city, country) {
     var code = "";
-    if (country = "Canada") {
+    if (country == "Canada") {
         code = "CA";
-    } else if (country = "United States") {
+    } else if (country == "United States") {
         code = "US";
     }
-
+console.log(code);
     var apiURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "," + code + "&appid=" + opernWeatherKey;
 
     fetch(apiURL)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
+                    saveToLocalStorage(data);
                     getWeather(data[0].lat, data[0].lon);
                 });
             } else {
