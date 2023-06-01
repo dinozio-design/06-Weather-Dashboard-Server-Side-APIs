@@ -15,7 +15,17 @@ $.each(countryCodes, function () {
 })
 
 function saveToLocalStorage(cityCoord) {
-    console.log(cityCoord);
+    var mySearchKey = `${cityCoord[0].lat}_${cityCoord[0].lon}`;
+    var mySearchParam = {
+        city: cityCoord[0].name,
+        countrt: cityCoord[0].country
+    };
+    // console.log(cityCoord[0].lat);
+    // console.log(cityCoord[0].lon);
+    // console.log(cityCoord[0].name);
+    // console.log(cityCoord[0].country);
+    // console.log(mySearchParam);
+    localStorage.setItem(mySearchKey, JSON.stringify(mySearchParam));
 }
 
 function renderMainCard(obj) {
@@ -57,7 +67,6 @@ function getGeoCode(city, country) {
     } else if (country == "United States") {
         code = "US";
     }
-console.log(code);
     var apiURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "," + code + "&appid=" + opernWeatherKey;
 
     fetch(apiURL)
