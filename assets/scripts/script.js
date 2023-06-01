@@ -47,20 +47,20 @@ function init() {
         console.log(searches);
     }
     function renderMainCard(obj, name) {
-        console.log(obj);
         displayArea.append(`<div class="card"><header class="card-header"><p class="card-header-title">Current Forecast for: ${name}(${obj.dt_txt.slice(0,10)})</p></header><div class="card-content"><div class="content">
         <p>Temperature: ${obj.main.temp} C</p>
         <p>Humidity: ${obj.main.humidity} </p>
         <p>Wind Speed: ${obj.wind.speed} C</p>
         </div></div></div>`);
-        // cityNameDisplay.text( `Current Forecast for: ${name} (${obj.dt_txt.slice(0,10)})`);
-
-        // todaysDate.text(obj.dt_txt.slice(0,10));
-        // resultContainerEl.append(`<h2>${}`);
-
     }
     function renderAheadCards(obj) {
         console.log(obj);
+        
+        resultContainerEl.append(`<div class="card "><header class="card-header"><p class="card-header-title">${obj.dt_txt.slice(0,10)}</p></header><div class="card-content"><div class="content">
+        <p>Temperature: ${obj.main.temp} C</p>
+        <p>Humidity: ${obj.main.humidity} </p>
+        <p>Wind Speed: ${obj.wind.speed} C</p>
+        </div></div></div>`);
     }
     function renderHistory() {
         console.log(searches);
