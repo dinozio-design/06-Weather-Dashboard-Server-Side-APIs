@@ -9,25 +9,42 @@ var resultContainerEl = $('#resultContainer');
 // in future builds will add ALL countries and their codes as array of objects
 // for now we will stick with Canada and US only 
 var countryCodes = [["CAN", "Canada"], ["US", "United States"]];
-
+var searches =[];
 $.each(countryCodes, function () {
     countrySelect.append(`<option id="${this[0]}">${this[1]}</option>`)
 })
-
+function contains(key) {
+    for (i = 0; i < searches.length; i++){
+        if(searches[i].key === key){
+            console.log(`found Douplicate`);
+            return true;
+        }
+    };
+    return false;
+}
 function saveToLocalStorage(cityCoord) {
     var mySearchKey = `${cityCoord[0].lat}_${cityCoord[0].lon}`;
     var mySearchParam = {
+        key: mySearchKey,
         city: cityCoord[0].name,
-        countrt: cityCoord[0].country
+        country: cityCoord[0].country,
+        lat: cityCoord[0].lat,
+        lon: cityCoord[0].lon
     };
-    // console.log(cityCoord[0].lat);
-    // console.log(cityCoord[0].lon);
-    // console.log(cityCoord[0].name);
-    // console.log(cityCoord[0].country);
-    // console.log(mySearchParam);
-    localStorage.setItem(mySearchKey, JSON.stringify(mySearchParam));
+    let foundDouplicate = contains(mySearchKey);
+    if (!foundDouplicate){
+        console.log(`no duoplicates`);
+        searches.push(mySearchParam);
+        localStorage.setItem("searchHistory", JSON.stringify(searches));
+    };
+    console.log(searches);
 }
-
+function init(){
+    var storedHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    if (storedHistory!== null) {
+        searches=storedHistory;
+    }
+}
 function renderMainCard(obj) {
     console.log(obj);
     // resultContainerEl.append("<")
@@ -36,6 +53,9 @@ function renderMainCard(obj) {
 function renderAheadCards(obj) {
     console.log(obj);
 }
+function renderHistory() {
+    console.log(searches);
+}
 function getWeather(lat, lon) {
     var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + opernWeatherKey + "&units=metric";
     fetch(apiURL)
@@ -43,7 +63,6 @@ function getWeather(lat, lon) {
             if (response.ok) {
                 response.json().then(function (data) {
                     let forecasts = data.list;
-                    console.log(forecasts.length);
                     renderMainCard(forecasts[0]);
                     for (var i = 0; i < forecasts.length; i++) {
                         if (i % 8 == 7) {
@@ -53,7 +72,7 @@ function getWeather(lat, lon) {
                 })
             } else {
                 alert('Error: ' + response.statusText);
-                
+
             }
         })
         .catch(function (error) {
@@ -84,16 +103,14 @@ function getGeoCode(city, country) {
             alert('Unable to connect to the weather servers');
         });
 }
-
-
 function submitHandler(event) {
     event.preventDefault();
     var cityName = this.cityNameSearch.value.trim();
     var countryName = this.countrySelect.value;
 
     // control 
-    cityName = "buffalo";
-    countryName = "United States";
+    // cityName = "buffalo";
+    // countryName = "United States";
     // end control
 
     if (cityName && countryName != "Select Country") {
@@ -106,5 +123,5 @@ function submitHandler(event) {
 };
 
 
-
+init();
 userFormEl.on('submit', submitHandler);
