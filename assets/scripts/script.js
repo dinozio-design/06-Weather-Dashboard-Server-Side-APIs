@@ -14,7 +14,7 @@ function init() {
     var searches = [];
     $.each(countryCodes, function () {
         countrySelect.append(`<option id="${this[0]}">${this[1]}</option>`)
-    })
+    });
     var storedHistory = JSON.parse(localStorage.getItem("searchHistory"));
     if (storedHistory !== null) {
         searches = storedHistory;
@@ -47,16 +47,16 @@ function init() {
         console.log(searches);
     }
     function renderMainCard(obj, name) {
-        displayArea.append(`<div class="card"><header class="card-header"><p class="card-header-title">Current Forecast for: ${name}(${obj.dt_txt.slice(0,10)})</p></header><div class="card-content"><div class="content">
+        displayArea.empty();
+        displayArea.append(`<div class="card"><header class="card-header"><p class="card-header-title">Current Forecast for: ${name}(${obj.dt_txt.slice(0, 10)})</p></header><div class="card-content"><div class="content">
         <p>Temperature: ${obj.main.temp} C</p>
         <p>Humidity: ${obj.main.humidity} </p>
         <p>Wind Speed: ${obj.wind.speed} C</p>
         </div></div></div>`);
+        resultContainerEl.empty();
     }
     function renderAheadCards(obj) {
-        console.log(obj);
-        
-        resultContainerEl.append(`<div class="card "><header class="card-header"><p class="card-header-title">${obj.dt_txt.slice(0,10)}</p></header><div class="card-content"><div class="content">
+        resultContainerEl.append(`<div class="card "><header class="card-header"><p class="card-header-title">${obj.dt_txt.slice(0, 10)}</p></header><div class="card-content"><div class="content">
         <p>Temperature: ${obj.main.temp} C</p>
         <p>Humidity: ${obj.main.humidity} </p>
         <p>Wind Speed: ${obj.wind.speed} C</p>
