@@ -45,9 +45,11 @@ function init() {
         };
         console.log(searches);
     }
-    function renderMainCard(obj) {
+    function renderMainCard(obj, name) {
         console.log(obj);
-        // resultContainerEl.append("<")
+        cityNameDisplay.text( `Current Forecast for: ${name} (${obj.dt_txt.slice(0,10)})`);
+        // todaysDate.text(obj.dt_txt.slice(0,10));
+        // resultContainerEl.append(`<h2>${}`);
 
     }
     function renderAheadCards(obj) {
@@ -62,8 +64,9 @@ function init() {
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
+                        let name = `${data.city.name}, ${data.city.country}`;
                         let forecasts = data.list;
-                        renderMainCard(forecasts[0]);
+                        renderMainCard(forecasts[0], name);
                         for (var i = 0; i < forecasts.length; i++) {
                             if (i % 8 == 7) {
                                 renderAheadCards(forecasts[i]);
