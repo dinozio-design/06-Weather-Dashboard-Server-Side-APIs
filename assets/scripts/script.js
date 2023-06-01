@@ -16,6 +16,8 @@ $.each(countryCodes, function () {
 
 function renderMainCard(obj) {
     console.log(obj);
+    // resultContainerEl.append("<")
+
 }
 function renderAheadCards(obj) {
     console.log(obj);
@@ -32,8 +34,8 @@ function getWeather(lat, lon) {
                     renderMainCard(forecasts[0]);
                     for (var i = 0; i < forecasts.length; i++) {
                         // renderAheadCards(forecasts[i]);
-                        if (i % 8 == 0) {
-                            console.log(i, forecasts[i]);
+                        if (i % 8 == 7) {
+                            renderAheadCards(forecasts[i]);
                         }
                     }
                 })
