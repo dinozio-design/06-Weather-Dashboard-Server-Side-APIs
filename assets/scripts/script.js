@@ -1,12 +1,13 @@
 function init() {
     var opernWeatherKey = "71786d75fbc7f8c6556506473f4a9371";
     var userFormEl = $('#userForm');
-    var historyButtonsEl = $('#historyButtons');
+    var displayArea = $('#displayArea');
     var cityNameSearch = $('#cityNameSearch');
-    var cityNameDisplay = $('#cityNameDisplay');
     var countrySelect = $('#countrySelect')
-    var todaysDate = $('#todaysDate');
     var resultContainerEl = $('#resultContainer');
+    var historyButtonsEl = $('#historyButtons');
+    var cityNameDisplay = $('#cityNameDisplay');
+    var todaysDate = $('#todaysDate');
     // in future builds will add ALL countries and their codes as array of objects
     // for now we will stick with Canada and US only 
     var countryCodes = [["CAN", "Canada"], ["US", "United States"]];
@@ -47,7 +48,13 @@ function init() {
     }
     function renderMainCard(obj, name) {
         console.log(obj);
-        cityNameDisplay.text( `Current Forecast for: ${name} (${obj.dt_txt.slice(0,10)})`);
+        displayArea.append(`<div class="card"><header class="card-header"><p class="card-header-title">Current Forecast for: ${name}(${obj.dt_txt.slice(0,10)})</p></header><div class="card-content"><div class="content">
+        <p>Temperature: ${obj.main.temp} C</p>
+        <p>Humidity: ${obj.main.humidity} </p>
+        <p>Wind Speed: ${obj.wind.speed} C</p>
+        </div></div></div>`);
+        // cityNameDisplay.text( `Current Forecast for: ${name} (${obj.dt_txt.slice(0,10)})`);
+
         // todaysDate.text(obj.dt_txt.slice(0,10));
         // resultContainerEl.append(`<h2>${}`);
 
