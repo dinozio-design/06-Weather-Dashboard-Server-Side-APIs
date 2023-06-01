@@ -18,6 +18,7 @@ function init() {
     var storedHistory = JSON.parse(localStorage.getItem("searchHistory"));
     if (storedHistory !== null) {
         searches = storedHistory;
+        renderHistory();
     };
 
     function contains(key) {
@@ -44,7 +45,7 @@ function init() {
             searches.push(mySearchParam);
             localStorage.setItem("searchHistory", JSON.stringify(searches));
         };
-        console.log(searches);
+        renderHistory();
     }
     function renderMainCard(obj, name) {
         displayArea.empty();
@@ -64,6 +65,13 @@ function init() {
     }
     function renderHistory() {
         console.log(searches);
+        historyButtonsEl.empty();
+        for (i = 0; i < searches.length; i++){
+            historyButtonsEl.append(`<button class="button" name=" ${searches[i].key}">${searches[i].city}, ${searches[i].country}</button>`
+
+            );
+            
+        }
     }
     function getWeather(lat, lon) {
         var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + opernWeatherKey + "&units=metric";
