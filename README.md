@@ -54,7 +54,7 @@ The following image shows the web application's appearance and functionality:
 ### Images of my App
 > The following image shows the my actual web application's appearance and functionality:
 
-![My Weather App](./assets/images/#)
+![My Weather App](./assets/images/myWork.png)
 
 ## References
 I used files and resources provided by BCS : GitLab repo UTOR-VIRT-FSF-PT-04-2023-U-LOLC
