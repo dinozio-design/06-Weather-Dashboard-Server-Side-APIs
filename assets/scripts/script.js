@@ -65,7 +65,7 @@ function init() {
         console.log(searches);
         historyButtonsEl.empty();
         for (i = 0; i < searches.length; i++) {
-            historyButtonsEl.append(`<button class="button" name=" ${searches[i].key}">${searches[i].city}, ${searches[i].country}</button>`
+            historyButtonsEl.append(`<button class="button is-fullwidth is-warning is-light" name=" ${searches[i].key}">${searches[i].city}, ${searches[i].country}</button>`
             );
         }
     }
