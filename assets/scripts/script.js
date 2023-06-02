@@ -22,7 +22,7 @@ function init() {
     function contains(key) {
         for (i = 0; i < searches.length; i++) {
             if (searches[i].key === key) {
-                console.log(`found Douplicate`);
+                // console.log(`found Douplicate`);
                 return true;
             }
         };
@@ -39,7 +39,7 @@ function init() {
         };
         let foundDouplicate = contains(mySearchKey);
         if (!foundDouplicate) {
-            console.log(`no duoplicates`);
+            // console.log(`no duoplicates`);
             searches.push(mySearchParam);
             localStorage.setItem("searchHistory", JSON.stringify(searches));
         };
@@ -47,7 +47,8 @@ function init() {
     }
     function renderMainCard(obj, name) {
         displayArea.empty();
-        displayArea.append(`<div class="card "><header class="card-header"><p class="card-header-title has-background-warning-light ">Current Forecast for: ${name}(${obj.dt_txt.slice(0, 10)})</p></header><div class="card-content"><div class="card-image"><figure class="image is-96x96"><img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Placeholder image"></figure></div><div class="content">
+        displayArea.append(`<div class="card "><header class="card-header"><p class="card-header-title has-background-warning-light ">Current Forecast for: ${name}(${obj.dt_txt.slice(0, 10)})</p></header><div class="card-content"><div class="card-image"><figure class="image is-96x96"><img src="https://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="Placeholder image"></figure></div><div class="content">
+        <p class="title">${obj.weather[0].description}</p>
         <p>Temperature: ${obj.main.temp} C</p>
         <p>Humidity: ${obj.main.humidity} </p>
         <p>Wind Speed: ${obj.wind.speed} km/hr</p>
@@ -55,15 +56,17 @@ function init() {
         resultContainerEl.empty();
     }
     function renderAheadCards(obj) {
+        // console.log(obj.weather[0]);
         resultContainerEl.append(`<div class="box is-shadowless"> <div class="card"><header class="card-header"><p class="card-header-title has-background-warning-light">${obj.dt_txt.slice(0, 10)}</p></header><div class="card-content"><div class="content is-small">
-        <div class="card-image"><figure class="image is-72x72"><img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Placeholder image"></figure></div><div class="content">
+        <div class="card-image"><figure class="image is-72x72"><img src="https://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="Placeholder image"></figure></div><div class="content">
+        <p>${obj.weather[0].description}</p>
         <p>Temperature: ${obj.main.temp}</p><p>C</p>
         <p>Humidity: ${obj.main.humidity}</p>
         <p>Wind Speed: ${obj.wind.speed}<span class="is-italic is-size-7"> km/hr</span></p>
         </div></div></div></div>`);
     }
     function renderHistory() {
-        console.log(searches);
+        // console.log(searches);
         historyButtonsEl.empty();
         for (i = 0; i < searches.length; i++) {
             historyButtonsEl.append(`<button class="button is-fullwidth is-warning is-light" name=" ${searches[i].key}">${searches[i].city}, ${searches[i].country}</button>`
@@ -97,7 +100,7 @@ function init() {
     function anotherWeather(event) {
         event.preventDefault();
         var saved = event.target.name.split("_");
-        console.log(saved);
+        // console.log(saved);
         x = saved[0].trim();
         y = saved[1].trim();
         getWeather(x, y);
