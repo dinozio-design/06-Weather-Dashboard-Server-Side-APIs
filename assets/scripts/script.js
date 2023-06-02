@@ -55,7 +55,7 @@ function init() {
     }
     function renderAheadCards(obj) {
         resultContainerEl.append(`<div class="box is-shadowless"> <div class="card"><header class="card-header"><p class="card-header-title has-background-warning-light">${obj.dt_txt.slice(0, 10)}</p></header><div class="card-content"><div class="content is-small">
-        <div class="card-image"><figure class="image is-72x72"><img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Placeholder image"></figure></div><div class="content"><p>Temperature: ${obj.main.temp} C</p>
+        <div class="card-image"><figure class="image is-72x72"><img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Placeholder image"></figure></div><div class="content"><p>Temperature: ${obj.main.temp}</p><p>C</p>
         <p>Humidity: ${obj.main.humidity} </p>
         <p>Wind Speed: ${obj.wind.speed} km/hr</p>
         </div></div></div></div>`);
